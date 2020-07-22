@@ -1,6 +1,7 @@
 import React, { useState, Fragment, useContext } from 'react';
 import FlickerContext from '../../context/flicker/flickerContext';
 import GroupItem from './GroupItem';
+import PieChart from './PieChart';
 
 const Groups = () => {
 
@@ -29,6 +30,7 @@ const Groups = () => {
 
     return (
         <Fragment>
+            <PieChart />
             <div className="container">
                 <p className="flow-text">Search Groups</p>
             </div>
@@ -44,7 +46,7 @@ const Groups = () => {
             <div className="card">
                 <div className="card-content">
                     <div className="row">
-                        { groups.length && groups.map(group => <GroupItem key={group.nsid} group={group} />) }
+                        { groups && groups.map(group => <GroupItem key={group.nsid} group={group} />) }
                     </div>
                 </div>
             </div>

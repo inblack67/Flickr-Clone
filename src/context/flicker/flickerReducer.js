@@ -7,8 +7,8 @@ export default (state, action) => {
         case GET_GROUPS: 
         return {
             ...state,
-            groups: payload.group,
-            groupsInfo: payload,
+            groups: payload.groups.group,
+            groupsInfo: payload.groups,
             loading: false
         }
         case GET_SINGLE_GROUP: 
@@ -20,7 +20,8 @@ export default (state, action) => {
         case GET_PHOTOS: 
         return {
             ...state,
-            photos: payload,
+            photos: payload.photos.photo,
+            photosInfo: payload.photos,
             loading: false
         }
         case FETCH_ERROR: 

@@ -1,6 +1,7 @@
-import React, { Suspense } from 'react'
+import React, { Suspense, useEffect } from 'react'
 import PropTypes from 'prop-types'
 import Preloader from '../Preloader'
+import M from 'materialize-css/dist/js/materialize';
 
 const GalleryItem = ({ photo: { farm, server, id, secret } }) => {
 

@@ -12,6 +12,7 @@ const FlickerState = (props) => {
         groups: [],
         group: null,
         groupsInfo: [],
+        photosInfo: [],
         photos: [],
         loading: true
     }
@@ -28,7 +29,6 @@ const FlickerState = (props) => {
 
     const getSingleGroup = async (id) => {
         const res = await fetchSingleGroup(id);
-        console.log(res);
         dispatch({
             type: GET_SINGLE_GROUP,
             payload: res

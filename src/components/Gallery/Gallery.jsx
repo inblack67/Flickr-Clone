@@ -6,17 +6,18 @@ import GalleryItem from './GalleryItem'
 const Gallery = ({ match }) => {
 
     useEffect(() => {
-        // getSingleGroup(match.params.groupId);
+        getSingleGroup(match.params.groupId);
         getPhotosByGroup(match.params.groupId)
         // eslint-disable-next-line
     },[])
 
     const flickerContext = useContext(FlickerContext);
 
-    const { photos, getSingleGroup, getPhotosByGroup } = flickerContext;
+    const { photos, getSingleGroup, group, getPhotosByGroup } = flickerContext;
 
     return (
         <div className='row'>
+            { group && <p className="flow-text"><span className="red-text">{group.group.name._content}</span> Gallery</p> }
             { photos && photos.map(photo => 
             <GalleryItem key={photo.id} photo={photo} />
             ) }

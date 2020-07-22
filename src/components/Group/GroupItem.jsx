@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import { withRouter } from 'react-router-dom'
 import FlickerContext from '../../context/flicker/flickerContext'
 
-const GroupItem = ({ group: { name, nsid }, history }) => {
+const GroupItem = ({ group: { name, nsid, iconfarm, iconserver }, history }) => {
 
     const flickerContext = useContext(FlickerContext);
 
@@ -18,6 +18,9 @@ const GroupItem = ({ group: { name, nsid }, history }) => {
         <div className="col m6 s6 l6">
             <div className="card black white-text">
                 <div className="card-content">
+                <div className="container center">
+                <img src={`https://farm${iconfarm}.staticflickr.com/${iconserver}/buddyicons/${nsid}.jpg`} style={{height: '80px', width: '80px'}} className='responsive-img' alt=""/>
+                </div>
                     <span className="card-title">
                         { name }
                     </span>
