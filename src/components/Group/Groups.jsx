@@ -1,5 +1,6 @@
-import React, { useState, Fragment, useContext } from 'react'
-import FlickerContext from '../context/flicker/flickerContext'
+import React, { useState, Fragment, useContext } from 'react';
+import FlickerContext from '../../context/flicker/flickerContext';
+import GroupItem from './GroupItem';
 
 const Groups = () => {
 
@@ -8,7 +9,7 @@ const Groups = () => {
     });
 
     const flickerContext = useContext(FlickerContext);
-    const { getGroups } = flickerContext;
+    const { getGroups, groups } = flickerContext;
 
     const onChange = e => {
         setFormData({
@@ -40,6 +41,13 @@ const Groups = () => {
                 <button type="submit" className="btn green">Search</button>
             </div>
             </form>
+            <div className="card">
+                <div className="card-content">
+                    <div className="row">
+                        { groups.length && groups.map(group => <GroupItem key={group.nsid} group={group} />) }
+                    </div>
+                </div>
+            </div>
         </Fragment>
     )
 }

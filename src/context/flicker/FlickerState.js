@@ -1,14 +1,18 @@
 import React, { useReducer } from 'react';
 import FlickerReducer from './flickerReducer';
 import FlickerContext from './flickerContext';
+import { GET_GROUPS, GET_PHOTOS, GET_SINGLE_GROUP } from '../types';
 import fetchGroups from '../../ajaxCalls/fetchGroups';
-import { GET_GROUPS } from '../types';
+import fetchSingleGroup from '../../ajaxCalls/fetchSingleGroup';
+import fetchPhotosByGroup from '../../ajaxCalls/fetchPhotosByGroup';
 
 const FlickerState = (props) => {
 
     const initialState = {
         groups: [],
-        gallery: [],
+        group: null,
+        groupsInfo: [],
+        photos: [],
         loading: true
     }
 
@@ -22,13 +26,34 @@ const FlickerState = (props) => {
         })
     }
 
+    const getSingleGroup = async (id) => {
+        const res = await fetchSingleGroup(id);
+        console.log(res);
+        dispatch({
+            type: GET_SINGLE_GROUP,
+            payload: res
+        })
+    }
+
+    const getPhotosByGroup = async (groupId) => {
+        const res = await fetchPhotosByGroup(groupId);
+        dispatch({
+            type: GET_PHOTOS,
+            payload: res
+        })
+    }
+
     return (
         <FlickerContext.Provider
         value={{
             loading: state.loading,
             groups: state.groups,
-            gallery: state.gallery,
-            getGroups
+            group: state.group,
+            groupsInfo: state.groupsInfo,
+            photos: state.photos,
+            getGroups,
+            getSingleGroup,
+            getPhotosByGroup
         }}>
             { props.children }
         </FlickerContext.Provider>
