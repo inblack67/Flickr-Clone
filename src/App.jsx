@@ -1,5 +1,13 @@
 import React, { useEffect } from 'react';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
+
 import FlickerState from './context/flicker/FlickerState';
+
+// components import
+import Home from './components/Home'
+import Groups from './components/Groups'
+import Gallery from './components/Gallery'
+import NotFound from './components/NotFound'
 
 import './App.css';
 import 'materialize-css/dist/css/materialize.min.css';
@@ -13,9 +21,16 @@ function App() {
 
   return (
     <FlickerState>
-      <div className="App">
-        <h1>hello</h1>
+      <Router>
+      <div className="container center">
+        <Switch>
+          <Route exact path='/' component={Home} /> 
+          <Route exact path='/groups' component={Groups} /> 
+          <Route exact path='/gallery' component={Gallery} /> 
+          <Route component={NotFound} /> 
+        </Switch>
       </div>
+      </Router>
     </FlickerState>
   );
 }
