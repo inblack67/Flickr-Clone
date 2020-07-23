@@ -14,7 +14,7 @@ const Gallery = ({ match }) => {
 
     const flickerContext = useContext(FlickerContext);
 
-    const { photos, getSingleGroup, group, fetchPhotosFurther, getPhotosByGroup } = flickerContext;
+    const { photos, getSingleGroup, group, fetchPhotosFurther, getPhotosByGroup, loading } = flickerContext;
 
     const fetchMore = () => {
         fetchPhotosFurther(match.params.groupId);
@@ -24,11 +24,12 @@ const Gallery = ({ match }) => {
         <div className='row'>
             { group && <p className="flow-text"><span className="red-text">{group.group.name._content}</span> Gallery</p> }
             <InfiniteScroll dataLength={photos.length} next={fetchMore} hasMore={true} loader={<Preloader />}>
+            <Suspense fallback={<Preloader />}>
             { photos && photos.map(photo => 
             <GalleryItem key={photo.id} photo={photo} />
             ) }
+            </Suspense>
             </InfiniteScroll>
-            <Suspense fallback={<Preloader />}></Suspense>
         </div>
     )
 }

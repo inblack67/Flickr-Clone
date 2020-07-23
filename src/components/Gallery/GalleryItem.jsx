@@ -1,13 +1,13 @@
-import React, { Suspense, useEffect } from 'react'
+import React, { Suspense, useEffect, useRef } from 'react'
 import PropTypes from 'prop-types'
 import Preloader from '../Preloader'
-// import M from 'materialize-css/dist/js/materialize';
-import capitalizeInitials from '../../utils/capitalizeInitials'
+import M from 'materialize-css/dist/js/materialize.min.js';
 
 const GalleryItem = ({ photo: { farm, server, id, secret, title, ownername } }) => {
 
+
     return (
-        <div className='col s6 m6 l6'>
+        <div className={`col s6 l6 m6`}>
             <div className="card">
             <Suspense fallback={<Preloader />}>
                 <div className="card-image">
@@ -17,7 +17,11 @@ const GalleryItem = ({ photo: { farm, server, id, secret, title, ownername } }) 
                     <span className="red-text">
                     <strong>{title}</strong>
                     </span>
-                    <p>By <span className="blue-text">{capitalizeInitials(ownername)}</span></p>
+                    <p>By 
+                        <span className="blue-text">
+                        {ownername}
+                        </span>
+                    </p>
                 </div>
             </Suspense>
             </div>

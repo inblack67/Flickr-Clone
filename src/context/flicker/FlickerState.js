@@ -5,10 +5,12 @@ import { GET_GROUPS, GET_PHOTOS, GET_SINGLE_GROUP, GET_PHOTOS_FURTHER } from '..
 import fetchGroups from '../../ajaxCalls/fetchGroups';
 import fetchSingleGroup from '../../ajaxCalls/fetchSingleGroup';
 import fetchPhotosByGroup from '../../ajaxCalls/fetchPhotosByGroup';
+import fetchAllGroups from '../../ajaxCalls/fetchAllGroups';
 
 const FlickerState = (props) => {
 
     const initialState = {
+        allGroupNames: null,
         groups: [],
         group: null,
         groupsInfo: [],
@@ -18,6 +20,11 @@ const FlickerState = (props) => {
     }
 
     const [state, dispatch] = useReducer(FlickerReducer, initialState);
+
+    const getAllGroups = async () => {
+        const res = await fetchAllGroups();
+        console.log(res);
+    }
 
     const getGroups = async ( { group } ) => {
         const res = await fetchGroups(group);
@@ -53,6 +60,7 @@ const FlickerState = (props) => {
 
     }
 
+
     return (
         <FlickerContext.Provider
         value={{
@@ -61,10 +69,12 @@ const FlickerState = (props) => {
             group: state.group,
             groupsInfo: state.groupsInfo,
             photos: state.photos,
+            allGroupNames: state.allGroupNames,
             getGroups,
             getSingleGroup,
             getPhotosByGroup,
-            fetchPhotosFurther
+            fetchPhotosFurther,
+            getAllGroups,
         }}>
             { props.children }
         </FlickerContext.Provider>

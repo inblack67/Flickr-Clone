@@ -31,6 +31,7 @@ function App() {
           <Route exact path='/groups' component={Groups} /> 
           <Suspense fallback={<Preloader />}>
             <Route exact path='/gallery/:groupId' component={Gallery} />
+            {/* <Route exact path='/gallery/:groupId' component={Gallery} /> */}
           </Suspense> 
           <Route component={NotFound} /> 
         </Switch>
