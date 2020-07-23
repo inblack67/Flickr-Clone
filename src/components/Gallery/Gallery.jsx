@@ -30,9 +30,9 @@ const Gallery = ({ match }) => {
             { group && <p className="flow-text">{group.group.name._content}</p> }
             <InfiniteScroll dataLength={photos.length} next={fetchMore} hasMore={true} loader={<Preloader />}>
             <Suspense fallback={<Preloader />}>
-            { photos && photos.map(photo => 
-            <GalleryItem key={photo.id} photo={photo} />
-            ) }
+                 { photos && photos.map(photo => 
+                    <GalleryItem key={photo.id} photo={photo} />
+                ) }
             </Suspense>
             </InfiniteScroll>
         </div>
