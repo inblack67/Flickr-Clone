@@ -43,6 +43,10 @@ const FlickerState = (props) => {
         })
     }
 
+    const fetchPhotosFurther = (groupId) => {
+        getPhotosByGroup(groupId);
+    }
+
     return (
         <FlickerContext.Provider
         value={{
@@ -53,7 +57,8 @@ const FlickerState = (props) => {
             photos: state.photos,
             getGroups,
             getSingleGroup,
-            getPhotosByGroup
+            getPhotosByGroup,
+            fetchPhotosFurther
         }}>
             { props.children }
         </FlickerContext.Provider>

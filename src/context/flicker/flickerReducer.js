@@ -20,7 +20,7 @@ export default (state, action) => {
         case GET_PHOTOS: 
         return {
             ...state,
-            photos: payload.photos.photo,
+            photos: [...state.photos, ...payload.photos.photo],
             photosInfo: payload.photos,
             loading: false
         }

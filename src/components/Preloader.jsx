@@ -3,7 +3,11 @@ import React, { Fragment } from 'react'
 const Preloader = () => {
     return (
     <Fragment>
-        <h1 className='red'>LOADING....</h1>
+        <div className="container">
+        <div className="progress">
+            <div className="indeterminate"></div>
+        </div>
+        </div>
     </Fragment>
     )
 }
