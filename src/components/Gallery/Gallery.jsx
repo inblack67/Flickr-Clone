@@ -3,6 +3,7 @@ import FlickerContext from '../../context/flicker/flickerContext'
 import Preloader from '../Preloader'
 import GalleryItem from './GalleryItem'
 import InfiniteScroll from 'react-infinite-scroll-component'
+import Loader from '../Loader'
 
 const Gallery = ({ match }) => {
 
@@ -18,6 +19,10 @@ const Gallery = ({ match }) => {
 
     const fetchMore = () => {
         fetchPhotosFurther(match.params.groupId);
+    }
+
+    if(loading){
+        return <Loader />
     }
 
     return (

@@ -1,4 +1,4 @@
-import React, { useContext, Fragment, useEffect } from 'react'
+import React, { useContext } from 'react'
 import highcharts from 'highcharts'
 import ReactHighcharts from 'highcharts-react-official'
 import FlickerContext from '../../context/flicker/flickerContext'

@@ -1,7 +1,9 @@
 import React from 'react'
+import './Loader.css'
 
 const Loader = () => {
     return (
+      <div className="container" id='loader'>
         <div className="preloader-wrapper active">
         <div className="spinner-layer spinner-red-only">
           <div className="circle-clipper left">
@@ -13,6 +15,7 @@ const Loader = () => {
           </div>
         </div>
         </div>
+      </div>
     )
 }
 

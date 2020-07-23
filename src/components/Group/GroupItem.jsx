@@ -2,16 +2,21 @@ import React, { memo, useContext } from 'react'
 import PropTypes from 'prop-types'
 import { withRouter } from 'react-router-dom'
 import FlickerContext from '../../context/flicker/flickerContext'
+import Loader from '../Loader'
 
 const GroupItem = ({ group: { name, nsid, iconfarm, iconserver }, history }) => {
 
     const flickerContext = useContext(FlickerContext);
 
-    const { getPhotosByGroup } = flickerContext;
+    const { getPhotosByGroup, loading } = flickerContext;
 
     const onClick = e => {
         getPhotosByGroup(nsid);
         history.push(`/gallery/${nsid}`);
+    }
+
+    if(loading){
+        return <Loader />
     }
 
     return (
