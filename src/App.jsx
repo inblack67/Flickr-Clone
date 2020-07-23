@@ -4,6 +4,7 @@ import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
 import FlickerState from './context/flicker/FlickerState';
 
 // components import
+import Navbar from './components/Navbar'
 import Home from './components/Home'
 import Groups from './components/Group/Groups'
 import NotFound from './components/NotFound'
@@ -20,11 +21,14 @@ function App() {
 
   useEffect(() => {
     M.AutoInit();
+    document.body.style.backgroundColor = 'black'
+    document.body.style.color = 'white'
   },[])
 
   return (
     <FlickerState>
       <Router>
+        <Navbar />
       <div className="container center">
         <Switch>
           <Route exact path='/' component={Home} /> 

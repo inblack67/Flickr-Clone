@@ -6,20 +6,20 @@ const GalleryItem = ({ photo: { farm, server, id, secret, title, ownername } }) 
 
 
     return (
-        <div className={`col s6 l6 m6`}>
-            <div className="card">
+        <div className='col s6 l6 m6'>
+            <div className="card black">
             <Suspense fallback={<Preloader />}>
                 <div className="card-image">
                     <img src={`https://farm${farm}.staticflickr.com/${server}/${id}_${secret}.jpg`} alt=""/>
                 </div>
                 <div className="card-content">
-                    <span className="red-text">
+                    <h5>
                     <strong>{title}</strong>
-                    </span>
-                    <p>By 
-                        <span className="blue-text">
+                    </h5>
+                    <p>
+                        <h6 className="red-text">
                         {ownername}
-                        </span>
+                        </h6>
                     </p>
                 </div>
             </Suspense>

@@ -20,8 +20,8 @@ const GroupItem = ({ group: { name, nsid, iconfarm, iconserver }, history }) => 
     }
 
     return (
-        <div className="col m6 s6 l6">
-            <div className="card black white-text">
+        <div className="col m6 s12 l6">
+            <div className="card pink">
                 <div className="card-content">
                 <div className="container center">
                 <img src={`https://farm${iconfarm}.staticflickr.com/${iconserver}/buddyicons/${nsid}.jpg`} style={{height: '80px', width: '80px'}} className='responsive-img' alt=""/>
@@ -30,7 +30,7 @@ const GroupItem = ({ group: { name, nsid, iconfarm, iconserver }, history }) => 
                         { name }
                     </span>
                     <div className="card-action">
-                        <button  className='btn red' onClick={onClick}>Gallery</button>
+                        <button  className='btn white black-text' onClick={onClick}>Gallery</button>
                     </div>
                 </div>
             </div>

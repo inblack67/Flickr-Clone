@@ -11,14 +11,10 @@ const Groups = () => {
 
     return (
         <Fragment>
-            <PieChart />
             <SearchGroup />
-            <div className="card">
-                <div className="card-content">
-                    <div className="row">
-                        { groups && groups.map(group => <GroupItem key={group.nsid} group={group} />) }
-                    </div>
-                </div>
+            <PieChart />
+            <div className="row">
+                { groups && groups.map(group => <GroupItem key={group.nsid} group={group} />) }
             </div>
         </Fragment>
     )

@@ -1,4 +1,4 @@
-import React, { useContext } from 'react'
+import React, { useContext, Fragment } from 'react'
 import highcharts from 'highcharts'
 import ReactHighcharts from 'highcharts-react-official'
 import FlickerContext from '../../context/flicker/flickerContext'
@@ -13,10 +13,14 @@ const Pie = () => {
 
     const options = {
         chart: {
-            type: 'pie'
+            type: 'pie',
+            backgroundColor: 'black',
         },
         title: {
-            text: ''
+            text: 'Group Photo Count',
+            style: {
+                color: 'yellow'
+            }
         },
         credits: {
             enabled: false
@@ -24,6 +28,10 @@ const Pie = () => {
         series: [
             {
                 name: 'Photo Count',
+                dataLabels: {
+                    enabled: true,
+                    color: 'white'
+                },
                 colorByPoint: true,
                 data: pieData
             }
@@ -31,8 +39,12 @@ const Pie = () => {
     }
 
     return (
-        <div className='container'>
-            { groups.length >= 1 && <ReactHighcharts options={options} highcharts={highcharts} /> }
+        <div className=''>
+            { groups.length >= 1 && <Fragment>
+                <hr/>
+                <ReactHighcharts options={options} highcharts={highcharts} />
+                <hr/>
+            </Fragment> }
         </div>
     )
 }

@@ -36,7 +36,7 @@ const Groups = () => {
                 <label htmlFor="group">Search Group</label>
             </div>
             <div className="input-field">
-                <button type="submit" className="btn green">Search</button>
+                <button type="submit" className="btn red">Search</button>
             </div>
             </form>
             </div>

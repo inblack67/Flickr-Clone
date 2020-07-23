@@ -4,8 +4,10 @@ import { Link } from 'react-router-dom'
 const Home = () => {
     return (
         <Fragment>
-            <p className="flow-text">Welcome to React | Flicker</p>
-            <Link to='/groups' className='btn blue pulse'>Groups</Link>
+            <p className="flow-text">
+                Welcome to React   | Flicker
+            </p>
+            <Link to='/groups' className='btn red pulse'>Search Groups</Link>
         </Fragment>
     )
 }
