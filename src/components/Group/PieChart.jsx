@@ -11,8 +11,6 @@ const Pie = () => {
 
     const pieData = setPieData(groups);
 
-    console.log(pieData);
-
     const options = {
         chart: {
             type: 'pie'

@@ -1,4 +1,4 @@
-import { GET_GROUPS, GET_SINGLE_GROUP, GET_PHOTOS, FETCH_ERROR } from '../types';
+import { GET_GROUPS, GET_SINGLE_GROUP, GET_PHOTOS, FETCH_ERROR, GET_PHOTOS_FURTHER } from '../types';
 
 export default (state, action) => {
     const { payload, type } = action;
@@ -20,8 +20,14 @@ export default (state, action) => {
         case GET_PHOTOS: 
         return {
             ...state,
-            photos: [...state.photos, ...payload.photos.photo],
+            photos: payload.photos.photo,
             photosInfo: payload.photos,
+            loading: false
+        }
+        case GET_PHOTOS_FURTHER: 
+        return {
+            ...state,
+            photos: [...state.photos, ...payload.photos.photo],
             loading: false
         }
         case FETCH_ERROR: 

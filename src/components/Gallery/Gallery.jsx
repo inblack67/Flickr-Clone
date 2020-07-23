@@ -8,13 +8,13 @@ const Gallery = ({ match }) => {
 
     useEffect(() => {
         getSingleGroup(match.params.groupId);
-        getPhotosByGroup(match.params.groupId, '1', '20')
+        getPhotosByGroup(match.params.groupId);
         // eslint-disable-next-line
     },[])
 
     const flickerContext = useContext(FlickerContext);
 
-    const { photos, getSingleGroup, group, getPhotosByGroup, fetchPhotosFurther } = flickerContext;
+    const { photos, getSingleGroup, group, fetchPhotosFurther, getPhotosByGroup } = flickerContext;
 
     const fetchMore = () => {
         fetchPhotosFurther(match.params.groupId);

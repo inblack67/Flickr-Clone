@@ -1,7 +1,8 @@
 import React, { Suspense, useEffect } from 'react'
 import PropTypes from 'prop-types'
 import Preloader from '../Preloader'
-import M from 'materialize-css/dist/js/materialize';
+// import M from 'materialize-css/dist/js/materialize';
+import capitalizeInitials from '../../utils/capitalizeInitials'
 
 const GalleryItem = ({ photo: { farm, server, id, secret, title, ownername } }) => {
 
@@ -16,7 +17,7 @@ const GalleryItem = ({ photo: { farm, server, id, secret, title, ownername } }) 
                     <span className="red-text">
                     <strong>{title}</strong>
                     </span>
-                    <p>By {ownername}</p>
+                    <p>By <span className="blue-text">{capitalizeInitials(ownername)}</span></p>
                 </div>
             </Suspense>
             </div>

@@ -1,7 +1,7 @@
 import React, { useReducer } from 'react';
 import FlickerReducer from './flickerReducer';
 import FlickerContext from './flickerContext';
-import { GET_GROUPS, GET_PHOTOS, GET_SINGLE_GROUP } from '../types';
+import { GET_GROUPS, GET_PHOTOS, GET_SINGLE_GROUP, GET_PHOTOS_FURTHER } from '../types';
 import fetchGroups from '../../ajaxCalls/fetchGroups';
 import fetchSingleGroup from '../../ajaxCalls/fetchSingleGroup';
 import fetchPhotosByGroup from '../../ajaxCalls/fetchPhotosByGroup';
@@ -33,6 +33,7 @@ const FlickerState = (props) => {
             type: GET_SINGLE_GROUP,
             payload: res
         })
+        // getPhotosByGroup(id);
     }
 
     const getPhotosByGroup = async (groupId) => {
@@ -42,9 +43,14 @@ const FlickerState = (props) => {
             payload: res
         })
     }
+    
+    const fetchPhotosFurther = async (groupId) => {
+        const res = await fetchPhotosByGroup(groupId);
+        dispatch({
+            type: GET_PHOTOS_FURTHER,
+            payload: res
+        })
 
-    const fetchPhotosFurther = (groupId) => {
-        getPhotosByGroup(groupId);
     }
 
     return (
