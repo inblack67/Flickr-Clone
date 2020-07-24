@@ -33,4 +33,13 @@ See the section about [running tests](https://facebook.github.io/create-react-ap
 
 ### `yarn deploy`
 
-Creates a build folder of the app and then deploys it to netlify. You will have to provide your netlify credentials for the latter. Don't worry, it's free of cost.
+Creates a build folder of the app and then deploys it to netlify. You will have install netlify cli if you have not already and provide your netlify credentials for the latter. Don't worry, it's free of cost.
+
+Installing Netlify CLI
+```sh
+npm install netlify-cli -g
+```
+or
+```sh
+yarn global add netlify-cli
+```
