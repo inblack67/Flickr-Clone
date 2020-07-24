@@ -2,7 +2,7 @@ import React, { Fragment, useContext } from 'react';
 import FlickerContext from '../../context/flicker/flickerContext';
 import GroupItem from './GroupItem';
 import PieChart from './PieChart';
-import SearchGroup from './SearchGroup'
+import AutoCompleteSearch from './AutoCompleteSearch'
 
 const Groups = () => {
 
@@ -11,7 +11,7 @@ const Groups = () => {
 
     return (
         <Fragment>
-            <SearchGroup />
+            <AutoCompleteSearch />
             <PieChart />
             <div className="row">
                 { groups && groups.map(group => <GroupItem key={group.nsid} group={group} />) }

@@ -17,7 +17,7 @@ const FlickerState = (props) => {
 
     const [state, dispatch] = useReducer(FlickerReducer, initialState);
 
-    const getGroups = async ( { group } ) => {
+    const getGroups = async (group) => {
         try {
             const res = await fetchGroups(group);
             dispatch({
