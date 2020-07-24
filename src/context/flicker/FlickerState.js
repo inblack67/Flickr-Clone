@@ -1,63 +1,80 @@
 import React, { useReducer } from 'react';
 import FlickerReducer from './flickerReducer';
 import FlickerContext from './flickerContext';
-import { GET_GROUPS, GET_PHOTOS, GET_SINGLE_GROUP, GET_PHOTOS_FURTHER } from '../types';
+import { GET_GROUPS, GET_PHOTOS, GET_SINGLE_GROUP, GET_PHOTOS_FURTHER, FETCH_GROUPS_ERROR, FETCH_PHOTOS_ERROR, FETCH_SINGLE_GROUP_ERROR } from '../types';
 import fetchGroups from '../../ajaxCalls/fetchGroups';
 import fetchSingleGroup from '../../ajaxCalls/fetchSingleGroup';
 import fetchPhotosByGroup from '../../ajaxCalls/fetchPhotosByGroup';
-import fetchAllGroups from '../../ajaxCalls/fetchAllGroups';
 
 const FlickerState = (props) => {
 
     const initialState = {
-        allGroupNames: null,
         groups: [],
         group: null,
-        groupsInfo: [],
-        photosInfo: [],
         photos: [],
         loading: true
     }
 
     const [state, dispatch] = useReducer(FlickerReducer, initialState);
 
-    const getAllGroups = async () => {
-        const res = await fetchAllGroups();
-        console.log(res);
-    }
-
     const getGroups = async ( { group } ) => {
-        const res = await fetchGroups(group);
-        dispatch({
-            type: GET_GROUPS,
-            payload: res
-        })
+        try {
+            const res = await fetchGroups(group);
+            dispatch({
+                type: GET_GROUPS,
+                payload: res
+            })
+        } catch (err) {
+            console.error(err)
+            dispatch({
+                type: FETCH_GROUPS_ERROR
+            })
+        }
     }
 
     const getSingleGroup = async (id) => {
-        const res = await fetchSingleGroup(id);
-        dispatch({
-            type: GET_SINGLE_GROUP,
-            payload: res
-        })
-        // getPhotosByGroup(id);
+        try {
+            const res = await fetchSingleGroup(id);
+            dispatch({
+                type: GET_SINGLE_GROUP,
+                payload: res
+            })
+        } catch (err) {
+            console.error(err)
+            dispatch({
+                type: FETCH_SINGLE_GROUP_ERROR
+            })
+        }
     }
 
     const getPhotosByGroup = async (groupId) => {
-        const res = await fetchPhotosByGroup(groupId);
-        dispatch({
-            type: GET_PHOTOS,
-            payload: res
-        })
+        try {
+            const res = await fetchPhotosByGroup(groupId);
+            dispatch({
+                type: GET_PHOTOS,
+                payload: res
+            })
+        } catch (err) {
+            console.error(err);
+            dispatch({
+                type: FETCH_PHOTOS_ERROR
+            })
+        }
     }
     
     const fetchPhotosFurther = async (groupId) => {
-        const res = await fetchPhotosByGroup(groupId);
-        dispatch({
-            type: GET_PHOTOS_FURTHER,
-            payload: res
-        })
-
+        try {
+            const res = await fetchPhotosByGroup(groupId);
+            dispatch({
+                type: GET_PHOTOS_FURTHER,
+                payload: res
+            })
+        } catch (err) {
+            console.error(err)
+            dispatch({
+                type: FETCH_PHOTOS_ERROR
+            })
+        }
     }
 
 
@@ -67,14 +84,11 @@ const FlickerState = (props) => {
             loading: state.loading,
             groups: state.groups,
             group: state.group,
-            groupsInfo: state.groupsInfo,
             photos: state.photos,
-            allGroupNames: state.allGroupNames,
             getGroups,
             getSingleGroup,
             getPhotosByGroup,
             fetchPhotosFurther,
-            getAllGroups,
         }}>
             { props.children }
         </FlickerContext.Provider>

@@ -1,4 +1,4 @@
-import { GET_GROUPS, GET_SINGLE_GROUP, GET_PHOTOS, FETCH_ERROR, GET_PHOTOS_FURTHER } from '../types';
+import { GET_GROUPS, GET_SINGLE_GROUP, GET_PHOTOS, GET_PHOTOS_FURTHER, FETCH_GROUPS_ERROR, FETCH_PHOTOS_ERROR, FETCH_SINGLE_GROUP_ERROR } from '../types';
 
 export default (state, action) => {
     const { payload, type } = action;
@@ -30,11 +30,18 @@ export default (state, action) => {
             photos: [...state.photos, ...payload.photos.photo],
             loading: false
         }
-        case FETCH_ERROR: 
+        case FETCH_GROUPS_ERROR: 
         return {
             groups: [],
+            loading: false
+        }
+        case FETCH_SINGLE_GROUP_ERROR: 
+        return {
             group: null,
-            groupsInfo: [],
+            loading: false
+        }
+        case FETCH_PHOTOS_ERROR: 
+        return {
             photos: [],
             loading: false
         }

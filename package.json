@@ -7,7 +7,6 @@
     "@testing-library/react": "^9.3.2",
     "@testing-library/user-event": "^7.1.2",
     "axios": "^0.19.2",
-    "colcade": "^0.2.0",
     "highcharts": "^8.1.2",
     "highcharts-react-official": "^3.0.0",
     "materialize-css": "^1.0.0-rc.2",
@@ -39,5 +38,8 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "use-mock-service-worker": "^0.1.1"
   }
 }
