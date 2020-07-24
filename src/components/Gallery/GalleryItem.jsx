@@ -12,11 +12,12 @@ const GalleryItem = ({ photo: { farm, server, id, secret, title, ownername } }) 
                     <img className='responsive-img' src={`https://farm${farm}.staticflickr.com/${server}/${id}_${secret}.jpg`} alt=""/>
                 </div>
                 <div className="card-content">
-                    <h5>
+                    <h6>
                     <strong>{title}</strong>
-                    </h5>
-                    <h6 className="red-text">
+                    <br/><br/>
+                    <span className="red-text">
                     {ownername}
+                    </span>
                     </h6>
                 </div>
             </Suspense>

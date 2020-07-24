@@ -4,7 +4,7 @@ import { withRouter } from 'react-router-dom'
 import FlickerContext from '../../context/flicker/flickerContext'
 import Loader from '../Loader'
 
-const GroupItem = ({ group: { name, nsid, iconfarm, iconserver }, history }) => {
+const GroupItem = ({ group: { name, nsid, iconfarm, iconserver, members }, history }) => {
 
     const flickerContext = useContext(FlickerContext);
 
@@ -21,17 +21,22 @@ const GroupItem = ({ group: { name, nsid, iconfarm, iconserver }, history }) => 
 
     return (
         <div className="col m6 s12 l6">
-            <div className="card grey  darken-4">
+            <div className="card small grey darken-4">
                 <div className="card-content">
-                <div className="container center">
+                <div className="center">
                 <img src={`https://farm${iconfarm}.staticflickr.com/${iconserver}/buddyicons/${nsid}.jpg`} className='responsive-img' alt=""/>
                 </div>
-                    <span className="card-title">
+                <span className="card-title">
                         { name }
+                </span>
+                <p className="flow-text">
+                    Members: <span className="red-text">
+                        {members}
                     </span>
-                    <div className="card-action">
-                        <button  className='btn white black-text' onClick={onClick}>Gallery</button>
-                    </div>
+                </p>
+                <div className="card-action">
+                    <button  className='btn white black-text' onClick={onClick}>Gallery</button>
+                </div>
                 </div>
             </div>
         </div>
