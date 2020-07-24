@@ -20,6 +20,7 @@ const Gallery = lazy(() => import('./components/Gallery/Gallery'));
 function App() {
 
   useEffect(() => {
+    // Materialize JS Init
     M.AutoInit();
     document.body.style.backgroundColor = 'black'
     document.body.style.color = 'white'
@@ -29,13 +30,12 @@ function App() {
     <FlickerState>
       <Router>
         <Navbar />
-      <div className="container center">
+      <div className="center">
         <Switch>
           <Route exact path='/' component={Home} /> 
           <Route exact path='/groups' component={Groups} /> 
           <Suspense fallback={<Preloader />}>
             <Route exact path='/gallery/:groupId' component={Gallery} />
-            {/* <Route exact path='/gallery/:groupId' component={Gallery} /> */}
           </Suspense> 
           <Route component={NotFound} /> 
         </Switch>

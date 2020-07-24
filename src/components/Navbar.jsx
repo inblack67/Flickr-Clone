@@ -8,7 +8,7 @@ const Navbar = () => {
                 <div className="container">
                     <Link className='brand-logo' to='/'>React | Flickr</Link>
                     <ul className="right">
-                        <li>
+                        <li className='hide-on-small-only'>
                             <Link to='/'>Home</Link>
                         </li>
                         <li>

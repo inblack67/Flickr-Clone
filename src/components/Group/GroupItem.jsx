@@ -21,10 +21,10 @@ const GroupItem = ({ group: { name, nsid, iconfarm, iconserver }, history }) => 
 
     return (
         <div className="col m6 s12 l6">
-            <div className="card grey darken-4">
+            <div className="card grey  darken-4">
                 <div className="card-content">
                 <div className="container center">
-                <img src={`https://farm${iconfarm}.staticflickr.com/${iconserver}/buddyicons/${nsid}.jpg`} style={{height: '80px', width: '80px'}} className='responsive-img' alt=""/>
+                <img src={`https://farm${iconfarm}.staticflickr.com/${iconserver}/buddyicons/${nsid}.jpg`} className='responsive-img' alt=""/>
                 </div>
                     <span className="card-title">
                         { name }
