@@ -1,14 +1,25 @@
-import React, { useContext, Suspense, useEffect, useRef } from 'react'
+import React, { useContext, Suspense, useEffect } from 'react'
 import FlickerContext from '../../context/flicker/flickerContext'
 import Preloader from '../Preloader'
 import GalleryItem from './GalleryItem'
-import InfiniteScroll from 'react-infinite-scroll-component'
+import InfiniteScroll from 'react-infinite-scroller'
+import Loader from '../Loader'
 
 const Gallery = ({ match }) => {
 
     useEffect(() => {
-        getSingleGroup(match.params.groupId);
-        getPhotosByGroup(match.params.groupId);
+
+        let mounted = true;
+
+        if(mounted){
+            getSingleGroup(match.params.groupId);
+            getPhotosByGroup(match.params.groupId);
+        }
+
+        return () => {
+            mounted = false;
+        }
+
         // eslint-disable-next-line
     },[])
 
@@ -16,56 +27,26 @@ const Gallery = ({ match }) => {
 
     const { photos, getSingleGroup, group, fetchPhotosFurther, getPhotosByGroup, loading } = flickerContext;
 
-    const loader = useRef(fetchPhotosFurther);
-    const observer = useRef(
-      new IntersectionObserver(
-        entries => {
-          const first = entries[0];
-          if (first.isIntersecting) {
-            loader.current();
-          }
-        },
-        { threshold: 1 }
-      )
-    );
+    const fetchMore = () => {
+        fetchPhotosFurther(match.params.groupId);
+    }
 
-    const more = true;
-
-    const [element, setElement] = React.useState(null);
-
-    useEffect(() => {
-      loader.current = fetchPhotosFurther;
-    }, [fetchPhotosFurther]);
-  
-    useEffect(() => {
-      const currentElement = element;
-      const currentObserver = observer.current;
-  
-      if (currentElement) {
-        currentObserver.observe(currentElement);
-      }
-  
-      return () => {
-        if (currentElement) {
-          currentObserver.unobserve(currentElement);
-        }
-      };
-    }, [element]);
+    if(loading){
+        return <Loader />
+    }
 
     return (
         <div className='row'>
-            { group && <p className="flow-text"><span className="red-text">{group.group.name._content}</span> Gallery</p> }
-
+            { group && <p className="flow-text">{group.group.name._content}</p> }
+            <InfiniteScroll pageStart={0} loadMore={fetchMore} hasMore={true} loader={<Preloader key={0} />}>
             <Suspense fallback={<Preloader />}>
-            { photos && photos.map(photo => 
-            <GalleryItem key={photo.id} photo={photo} />
-            ) }
+                <div className="grid-container">
+                 { photos && photos.map(photo => 
+                    <GalleryItem key={photo.id} photo={photo} />
+                ) }
+                </div>
             </Suspense>
-
-            {!loading && more && (
-          <li ref={setElement} style={{ background: "transparent" }}></li>
-            )}
-
+            </InfiniteScroll>
         </div>
     )
 }
