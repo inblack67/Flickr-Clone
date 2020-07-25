@@ -68,6 +68,7 @@ const Groups = () => {
                     setGroup(suggestion.name);
                 }}
                  />
+                 <span className="helper-text white-text left">Say, Cars?</span>
             </div>
             <div className="input-field">
                 <button type="submit" className="btn red">Search</button>
