@@ -16,7 +16,7 @@ const GalleryItem = ({ photo: { farm, server, id, secret, title, ownername } }) 
             <div className="card small grey darken-4">
             <Suspense fallback={<Preloader />}>
                 <div className="card-image" >
-                    <img ref={boxedImage} className='materialboxed responsive-img' src={`https://farm${farm}.staticflickr.com/${server}/${id}_${secret}.jpg`} alt=""/>
+                    <img ref={boxedImage} className='materialboxed responsive-img' src={`https://farm${farm}.staticflickr.com/${server}/${id}_${secret}.jpg`} alt={title} />
                 </div>
                 <div className="card-content">
                     <h6>

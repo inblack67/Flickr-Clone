@@ -24,7 +24,7 @@ const GroupItem = ({ group: { name, nsid, iconfarm, iconserver, members }, histo
             <div className="card small grey darken-4">
                 <div className="card-content">
                 <div className="center">
-                <img src={`https://farm${iconfarm}.staticflickr.com/${iconserver}/buddyicons/${nsid}.jpg`} className='responsive-img' alt=""/>
+                <img src={`https://farm${iconfarm}.staticflickr.com/${iconserver}/buddyicons/${nsid}.jpg`} className='responsive-img' alt={name}/>
                 </div>
                 <span className="card-title">
                         { name }
