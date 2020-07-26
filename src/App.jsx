@@ -12,7 +12,8 @@ import Preloader from './components/Preloader'
 
 import './App.css';
 import 'materialize-css/dist/css/materialize.min.css';
-import M from 'materialize-css/dist/js/materialize';
+import MJS from 'materialize-css/dist/js/materialize';
+import MCSS from 'materialize-css/dist/js/materialize';
 
 // Lazy Loads
 const Gallery = lazy(() => import('./components/Gallery/InfiniteGallery'));
@@ -20,8 +21,9 @@ const Gallery = lazy(() => import('./components/Gallery/InfiniteGallery'));
 function App() {
 
   useEffect(() => {
-    // Materialize JS Init
-    M.AutoInit();
+    // Materialize JS/CSS Init
+    MJS.AutoInit();
+    MCSS.AutoInit();
     document.body.style.backgroundColor = 'black'
     document.body.style.color = 'white'
   },[])
