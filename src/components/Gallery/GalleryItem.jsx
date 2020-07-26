@@ -13,19 +13,19 @@ const GalleryItem = ({ photo: { farm, server, id, secret, title, ownername } }) 
 
     return (
         <div className='col s12 l4 m6'>
-            <div className="card small grey darken-4">
+            <div className="card medium grey darken-4">
             <Suspense fallback={<Preloader />}>
                 <div className="card-image" >
                     <img ref={boxedImage} className='materialboxed responsive-img' src={`https://farm${farm}.staticflickr.com/${server}/${id}_${secret}.jpg`} alt={title} />
                 </div>
                 <div className="card-content">
-                    <h6>
+                    <h5>
                     <strong>{title}</strong>
                     <br/><br/>
                     <span className="red-text">
                     {ownername}
                     </span>
-                    </h6>
+                    </h5>
                 </div>
             </Suspense>
             </div>
