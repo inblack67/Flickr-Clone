@@ -2,7 +2,7 @@ import axios from 'axios';
 
 export default async text => {
     try {
-        const res = await axios(`${process.env.REACT_APP_FLICKER_API_ENDPOINT}?method=flickr.groups.search&api_key=${process.env.REACT_APP_FLICKER_API_KEY}&text=${text}&format=json&nojsoncallback=1`);
+        const res = await axios(`https://api.flickr.com/services/rest?method=flickr.groups.search&api_key=ed50388361ea6fb946c2426aafe1c40b&text=${text}&format=json&nojsoncallback=1`);
         return res.data;
     } catch (err) {
         console.error(err)
